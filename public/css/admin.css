@@ -17,7 +17,7 @@ html {
     padding:10px 0;
     height:100%;
     position: fixed;
-    top:8.3%;
+    top:10%;
     left:0;
     background-color: white;
     width:180px;
@@ -80,8 +80,13 @@ html {
 }
 
 .containers {
+    z-index:0;
+    position: absolute;
+    top:15%;
+    left:200px;
     width:calc(100% - 150px);
 }
+
 
 
 @media(max-width:1024px) {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("title") | administration</title>
+    @yield("css")
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -20,6 +21,9 @@
 
         </div>
     </x-app-layout>
+    @php
+        $route = request()->route()->getName();
+    @endphp
     <div class="navbars">
         <div class="nav-items">
             <a href="/" style="text-decoration:none;">
@@ -28,13 +32,13 @@
             </a>
             <a class="" style="text-decoration:none;" href="/publications">
                  <span class="icons"><i class='bx bxs-map'></i></span>
-                 <span class="text">Destinations</span>
+                 <span class="text">Publications</span>
             </a>
             <a>
                  <span class="icons"><i class='bx bxs-info-circle'></i></span>
                  <span class="text">Agence</span>
             </a>
-            <a style="text-decoration:none;" href="/users">
+            <a href="{{route('admin.users.index')}}" @class(['active' => str_contains($route, '.users.')]) style="text-decoration:none;" href="/users">
                  <span class="icons"><i class='bx bxs-user'></i></span>
                  <span class="text">Utilisateurs</span>
             </a>

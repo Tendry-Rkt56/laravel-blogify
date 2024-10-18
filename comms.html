@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Publication d'Utilisateur</title>
+</head>
+<body>
+    <div class="post-container">
+        <div class="user-info">
+            <img src="user-photo.jpg" alt="Photo de l'utilisateur" class="user-photo">
+            <span class="user-name">Nom de l'utilisateur</span>
+        </div>
+        <div class="post-content">
+            <img src="post-image.jpg" alt="Image de la publication" class="post-image">
+            <p class="post-description">
+                Voici la description de la publication. Elle peut contenir du texte qui explique la photo ou le sujet de la publication.
+            </p>
+        </div>
+        <div class="post-footer">
+            <span class="comments-count">12 commentaires</span>
+        </div>
+    </div>
+</body>
+</html>
+<style>
+				body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.post-container {
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.post-content {
+    padding: 10px;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.post-description {
+    font-size: 14px;
+    color: #333;
+}
+
+.post-footer {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    text-align: right;
+}
+
+.comments-count {
+    font-size: 13px;
+    color: #555;
+}
+</style>
