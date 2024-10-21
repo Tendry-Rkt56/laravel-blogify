@@ -13,7 +13,7 @@
             </div>
             <div class="contact-item">
                 <span class="icon">📧</span>
-                <a class="adresse" href="mailto:{{$user->email}}">{{$user->email}}</a>
+                <a class="adresse">{{$user->email}}</a>
             </div>
         </div>
     </div>
