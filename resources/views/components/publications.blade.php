@@ -1,12 +1,12 @@
 <div class="post-wrapper">
     <div class="post-header">
-        <img src="{{$post->user->imageUrl()}}" alt="User Photo" class="user-photo">
+        <img src="{{$post->user->imageUrl()}}" class="user-photo">
         <div class="user-info">
             @php
                 $route = str_contains(request()->route()->getName(), 'admin.') ? 'admin.posts.show' : 'user.posts.show';
             @endphp
             <a href="{{route($route, $post->user)}}"><h3>{{$post->user->name}}</h3></a>
-            <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</span>
+            <span class="post-date">Publié le: <span class="fw-bold">{{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</span></span>
         </div>
     </div>
     <div class="post-content">
@@ -45,10 +45,10 @@
     @forelse ($post->comments as $comment)
         <div class="comment">
             <div class="comment-header">
-                <img src="{{$comment->user->image ? $comment->user->imageUrl() : 'https://via.placeholder.com/40'}}" alt="Commenter Photo" class="comment-photo">
+                <img src="{{$comment->user->image ? $comment->user->imageUrl() : 'https://via.placeholder.com/40'}}" alt="" class="comment-photo">
                 <div class="comment-info">
                     <a href="{{route('admin.users.show', $comment->user)}}"><h4>{{$comment->user->name}}</h4></a>
-                    <span class="comment-date">Commenté le : 20 Octobre 2024</span>
+                    <span class="comment-date">Commenté le : <strong>{{ \Carbon\Carbon::parse($comment->created_at)->translatedFormat('d F Y')}}</strong></span>
                 </div>
             </div>
             <div class="comment-content">

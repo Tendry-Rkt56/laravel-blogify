@@ -1,12 +1,12 @@
 <div class="posts-wrapper">
     <div class="post-header">
-        <img src="{{$post->user->imageUrl()}}" alt="User Photo" class="user-photo">
+        <img src="{{$post->user->imageUrl()}}" alt="" class="user-photo">
         <div class="user-info">
             @php
                 $route = str_contains(request()->route()->getName(), 'admin.') ? 'admin.users.show' : 'user.show';
             @endphp
             <a href="{{route($route, $post->user)}}"><h3>{{$post->user->name}}</h3></a>
-            <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</span>
+            <span class="post-date">Publié le : <strong>{{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</strong></span>
         </div>
     </div>
     <div class="post-content">
