@@ -2,21 +2,29 @@
     <div class="post-header">
         <img src="{{$post->user->imageUrl()}}" alt="User Photo" class="user-photo">
         <div class="user-info">
-            <a href="{{route('admin.users.show', $post->user)}}"><h3>{{$post->user->name}}</h3></a>
+            @php
+                $route = str_contains(request()->route()->getName(), 'admin.') ? 'admin.users.show' : 'user.show';
+            @endphp
+            <a href="{{route($route, $post->user)}}"><h3>{{$post->user->name}}</h3></a>
             <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</span>
         </div>
     </div>
     <div class="post-content">
+        @if ($post->image)
+            <img style="width:40%;height:150px;" src="{{$post->imageUrl()}}" alt="">
+        @endif
         <p>{{$post->description}}</p>
     </div>
-    <div class="post-footer">
+    <div class="post-footer container-fluid">
         <div class="tags">
-            <span class="tag">#JavaScript</span>
-            <span class="tag">#PHP</span>
+            <form class="d-flex align-items-center justify-content-center gap-1" style="width:80%">
+                <textarea name="content" id="" class="form-control"></textarea>
+                <input type="submit" class="btn btn-outline-primary" value="Répondre">
+            </form>
         </div>
         <div class="post-actions">
-            @if (Auth::user()->isAdmin() || Auth::user()->id == $post->user->id)
-                <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
+            @if (str_contains(request()->route()->getName(), 'admin.') && Auth::user()->isAdmin() || Auth::user()->id == $post->user->id)
+                <form action="{{route('user.posts.destroy', $post)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="mx-1 btn btn-danger">Supprimer</button>
@@ -25,8 +33,9 @@
             <button class="share-btn">Contacter</button>
             @php
                 $commentaires = $post->comments->count() > 1 ? 'commentaires' : 'commentaire';
+                $route = str_contains(request()->route()->getName(), 'admin.') ? 'admin.posts.show' : 'user.posts.show';
             @endphp
-            <a href="{{route('admin.posts.show', $post)}}"><span>{{$post->comments->count()}} {{$commentaires}}</span></a>
+            <a href="{{route($route, $post)}}"><span>{{$post->comments->count()}} {{$commentaires}}</span></a>
         </div>
     </div>
 </div>

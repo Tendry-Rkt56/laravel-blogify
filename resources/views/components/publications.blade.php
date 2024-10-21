@@ -2,12 +2,18 @@
     <div class="post-header">
         <img src="{{$post->user->imageUrl()}}" alt="User Photo" class="user-photo">
         <div class="user-info">
-            <a href="{{route('admin.users.show', $post->user)}}"><h3>{{$post->user->name}}</h3></a>
+            @php
+                $route = str_contains(request()->route()->getName(), 'admin.') ? 'admin.posts.show' : 'user.posts.show';
+            @endphp
+            <a href="{{route($route, $post->user)}}"><h3>{{$post->user->name}}</h3></a>
             <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</span>
         </div>
     </div>
     <div class="post-content">
-        <img style="width:40%;height:150px;" src="{{$post->user->imageUrl()}}" alt="">
+        @if ($post->image)
+            <img style="width:40%;height:150px;" src="{{$post->imageUrl()}}" alt="">
+        @endif
+        <h3 class="fw-bolder">{{$post->title}}</h3>
         <p>{{$post->description}}</p>
     </div>
     <div class="post-footer">
@@ -16,8 +22,8 @@
             <span class="tag">#PHP</span>
         </div>
         <div class="post-actions">
-            @if (Auth::user()->isAdmin() || Auth::user()->id == $post->user->id)
-                <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
+            @if (str_contains(request()->route()->getName(), 'admin.') && Auth::user()->isAdmin() || Auth::user()->id == $post->user->id)
+                <form action="{{route('user.posts.destroy', $post)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="mx-1 btn btn-danger">Supprimer</button>

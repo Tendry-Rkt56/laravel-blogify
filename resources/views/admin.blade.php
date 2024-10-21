@@ -23,7 +23,7 @@
     @endphp
     <div class="navbars">
         <div class="nav-items">
-            <a href="{{route('dashboard')}}" @class(['active' => $route == 'dashboard']) style="text-decoration:none;">
+            <a href="{{route('admin.dashboard')}}" @class(['active' => $route == 'dashboard']) style="text-decoration:none;">
                  <span class="icons"><i class='bx bxs-home'></i></span>
                  <span class="text">Accueil</span>
             </a>

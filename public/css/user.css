@@ -1,0 +1,19 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f0f2f3;
+}
+
+.containers {
+    position:absolute;
+    top:15%;
+    left:2%;
+}

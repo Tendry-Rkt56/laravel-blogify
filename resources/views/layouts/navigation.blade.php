@@ -5,19 +5,42 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="str_contains(request()->route()->getName(), 'admin.')">
-                        {{ __('Administrateur') }}
-                    </x-nav-link>
-                    @if (Auth::user()->isAdmin())
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('home')">
+                    @if (Auth::user()->isAdmin() && str_contains(request()->route()->getName(), 'admin.'))
+                        <x-nav-link :href="route('admin.dashboard')" :active="str_contains(request()->route()->getName(), 'admin.')">
+                            {{ __('Administrateur') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('user.posts.index')" :active="request()->routeIs('home')">
                             {{ __('Utilisateur') }}
+                        </x-nav-link>
+                    @elseif (Auth::user()->isAdmin() && str_contains(request()->route()->getName(), 'user.'))
+                        <x-nav-link :href="route('admin.dashboard')" :active="str_contains(request()->route()->getName(), 'admin.')">
+                            {{ __('Administration') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('user.posts.index')" :active="str_contains(request()->route()->getName(), 'user.posts')">
+                            {{ __('Publications') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('user.list')" :active="str_contains(request()->route()->getName(), 'user.list')">
+                            {{ __('Utilisateurs') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                            {{ __('Profil') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('user.posts.index')" :active="str_contains(request()->route()->getName(), 'user.posts')">
+                            {{ __('Publications') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('user.list')" :active="str_contains(request()->route()->getName(), 'user.list')">
+                            {{ __('Utilisateurs') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                            {{ __('Profil') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -72,7 +95,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

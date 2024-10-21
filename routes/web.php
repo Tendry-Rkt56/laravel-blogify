@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\PostController as UserPostController;
+use App\Http\Controllers\User\UserController as UserUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,8 +37,13 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->name('admin.')->group(fu
     Route::resource('posts', PostController::class);
 });
 
-Route::prefix('user')->middleware(['auth'])->name('user')->group(function () {
+Route::prefix('user')->middleware(['auth'])->name('user.')->group(function () {
+    Route::resource('posts', UserPostController::class);
+});
 
+Route::prefix('user')->middleware('auth')->name('user.')->group(function() {
+    Route::get('/list', [UserUserController::class, 'index'])->name('list');
+    Route::get('/{user}', [UserUserController::class, 'show'])->name('show');
 });
 
 require __DIR__.'/auth.php';
