@@ -27,7 +27,31 @@ Suivez les étapes ci-dessous pour configurer le projet localement :
     Avant de lancer l'application, assurez-vous de configurer correctement le fichier .env en y renseignant les informations de connexion à la base de données, ainsi que les autres variables d'environnement nécessaires."
 
 4. **Migrer la base de données et exécuter les seeders**
-    `php artisan migrate --seed`
+    Exécuter la commande `php artisan migrate --seed`
 
 5. **Lancer le serveur de développement**
-    `php artisan serve`
+    Exécuter la commande `php artisan serve`
+
+
+## Informations de connexion 
+  ### Administrateur
+      - URL de connexion : 'http://localhost:8000/login'
+      - Email : admin01@gmail.com
+      - Mot de passe : admin01
+
+## Illustrations
+![Illustration 1](illustrations/1.png)
+
+![Illustration 1](illustrations/2.png)
+
+![Illustration 1](illustrations/3.png)
+
+![Illustration 1](illustrations/4.png)
+
+## Contributions
+Les contributions sont les bienvenues ! Veuillez ouvrir une issue ou soumettre une pull request pour toute amélioration ou correction de bugs.
+
+## Contact
+- **Nom** : Tendry Zéphyrin
+- **Email** : tendryzephyrin@gmail.com
+- **GitHub** : [Tendry-Rkt56](https://github.com/Tendry-Rkt56)
