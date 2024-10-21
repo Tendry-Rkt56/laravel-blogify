@@ -30,9 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['auth','isAdmin'])->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
+});
+
+Route::prefix('user')->middleware(['auth'])->name('user')->group(function () {
+
 });
 
 require __DIR__.'/auth.php';
