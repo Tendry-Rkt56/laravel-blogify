@@ -24,13 +24,15 @@ Suivez les étapes ci-dessous pour configurer le projet localement :
 
 3. **Ouvrez .env et modifiez les paramètres pour votre configuration de base de données locale** 
 
-    Avant de lancer l'application, assurez-vous de configurer correctement le fichier .env en y renseignant les informations de connexion à la base de données, ainsi que les autres variables d'environnement nécessaires."
+4. **Migrer la base de données et exécuter les seeders** 
 
-4. **Migrer la base de données et exécuter les seeders**
-    Exécuter la commande `php artisan migrate --seed`
+   ```bash
+    php artisan migrate --seed
 
 5. **Lancer le serveur de développement**
-    Exécuter la commande `php artisan serve`
+    
+   ```bash
+   php artisan serve
 
 
 ## Informations de connexion 
