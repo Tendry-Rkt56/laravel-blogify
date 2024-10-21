@@ -1,15 +1,27 @@
-<div class="post-container">
-    <div class="user-info">
-        <img src="user-photo.jpg" alt="Photo de l'utilisateur" class="user-photo">
-        <span class="user-name">{{$publication->user->name}}</span>
+<div class="post-wrapper">
+    <div class="post-header">
+        <img src="{{$post->user->imageUrl()}}" alt="User Photo" class="user-photo">
+        <div class="user-info">
+            <a href="{{route('admin.users.show', $post->user)}}"><h3>{{$post->user->name}}</h3></a>
+            <span class="post-date"> {{ \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y')}}</span>
+        </div>
     </div>
     <div class="post-content">
-        <img src="post-image.jpg" alt="Image de la publication" class="post-image">
-        <p class="post-description">
-            {{$publication->description}}
-        </p>
+        <p>{{$post->description}}</p>
     </div>
     <div class="post-footer">
-        <span class="comments-count">12 commentaires</span>
+        <div class="tags">
+            <span class="tag">#JavaScript</span>
+            <span class="tag">#PHP</span>
+        </div>
+        <div class="post-actions">
+            <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="mx-1 btn btn-danger">Supprimer</button>
+            </form>
+            <button class="share-btn">Contacter</button>
+            <span>123 Vues</span>
+        </div>
     </div>
 </div>

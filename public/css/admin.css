@@ -8,6 +8,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: #f0f2f3;
+}
+
 .navbars {
     z-index:1;
     display: flex;
@@ -84,7 +88,7 @@ html {
     position: absolute;
     top:15%;
     left:200px;
-    width:calc(100% - 150px);
+    width:calc(100% - 180px);
 }
 
 

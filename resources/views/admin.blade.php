@@ -26,11 +26,11 @@
     @endphp
     <div class="navbars">
         <div class="nav-items">
-            <a href="/" style="text-decoration:none;">
+            <a href="{{route('dashboard')}}" @class(['active' => $route == 'dashboard']) style="text-decoration:none;">
                  <span class="icons"><i class='bx bxs-home'></i></span>
                  <span class="text">Accueil</span>
             </a>
-            <a class="" style="text-decoration:none;" href="/publications">
+            <a href="{{route('admin.posts.index')}}" @class(['active' => str_contains($route, '.posts.')]) style="text-decoration:none;" href="/publications">
                  <span class="icons"><i class='bx bxs-map'></i></span>
                  <span class="text">Publications</span>
             </a>

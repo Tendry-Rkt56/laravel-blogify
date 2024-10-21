@@ -43,7 +43,7 @@
                         <td>{{$user->id}}</td>
                         <td>
                             @if ($user->image)
-                            <img class="image" src="{{$user->imageUrl()}}" alt="">
+                            <img style="width:40px;height:40px;border-radius:50%" class="image" src="{{$user->imageUrl()}}" alt="">
                             @endif
                         </td>
                         <td style="color:#6c7af5" class="name">{{$user->name}}</td>

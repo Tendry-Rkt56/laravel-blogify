@@ -54,11 +54,13 @@
 
 .contact-info {
     display: flex;
+    justify-content:center;
     flex-direction: column;
     align-items: center;
 }
 
 .contact-item {
+    width:90%;
     display: flex;
     align-items: center;
     font-size: 14px;
@@ -69,4 +71,10 @@
 .contact-item .icon {
     font-size: 18px;
     margin-right: 8px;
+    width:20%;
+}
+
+.adresse {
+    align-self:self-start;
+    width:80%;
 }

@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::where('name', 'LIKE', '%'.$request->input('search').'%')->paginate(10);
+        $users = User::where('name', 'LIKE', '%'.$request->input('search').'%')->orWhere('email', 'LIKE', '%'.$request->input('search').'%')->paginate(10);
         return view('admin.users.index', [
             'users' => $users,
             'search' => $request->input('search')
