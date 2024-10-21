@@ -24,20 +24,20 @@
     <div class="navbars">
         <div class="nav-items">
             <a href="{{route('admin.dashboard')}}" @class(['active' => $route == 'dashboard']) style="text-decoration:none;">
-                 <span class="icons"><i class='bx bxs-home'></i></span>
-                 <span class="text">Accueil</span>
+                <span class="icons"><i class='bx bxs-home'></i></span>
+                <span class="text">Accueil</span>
             </a>
             <a href="{{route('admin.posts.index')}}" @class(['active' => str_contains($route, '.posts.')]) style="text-decoration:none;" href="/publications">
-                 <span class="icons"><i class='bx bxs-map'></i></span>
-                 <span class="text">Publications</span>
+                <span class="icons"><i class='bx bxs-map'></i></span>
+                <span class="text">Publications</span>
             </a>
             <a href="{{route('profile.edit')}}">
-                 <span class="icons"><i class='bx bx-user-circle'></i></span>
-                 <span class="text">Compte</span>
+                <span class="icons"><i class='bx bx-user-circle'></i></span>
+                <span class="text">Compte</span>
             </a>
             <a href="{{route('admin.users.index')}}" @class(['active' => str_contains($route, '.users.')]) style="text-decoration:none;" href="/users">
-                 <span class="icons"><i class='bx bxs-user'></i></span>
-                 <span class="text">Utilisateurs</span>
+                <span class="icons"><i class='bx bxs-user'></i></span>
+                <span class="text">Utilisateurs</span>
             </a>
         </div>
    </div>

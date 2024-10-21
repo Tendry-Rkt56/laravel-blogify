@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\PostController as UserPostController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::prefix('user')->middleware(['auth'])->name('user.')->group(function () {
 Route::prefix('user')->middleware('auth')->name('user.')->group(function() {
     Route::get('/list', [UserUserController::class, 'index'])->name('list');
     Route::get('/{user}', [UserUserController::class, 'show'])->name('show');
+    Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('/comment/{comment}', [CommentController::class, 'delete'])->name('comments.delete');
 });
+
 
 require __DIR__.'/auth.php';

@@ -17,8 +17,10 @@
     </div>
     <div class="post-footer container-fluid">
         <div class="tags">
-            <form class="d-flex align-items-center justify-content-center gap-1" style="width:80%">
-                <textarea name="content" id="" class="form-control"></textarea>
+            <form action="{{route('user.comments.store')}}" class="d-flex align-items-center justify-content-center gap-1" method="POST" style="width:80%">
+                @csrf
+                <input type="hidden" value="{{$post->id}}" name="post_id">
+                <textarea name="content" id="" class="form-control @error('content') is-invalid @enderror"></textarea>
                 <input type="submit" class="btn btn-outline-primary" value="Répondre">
             </form>
         </div>

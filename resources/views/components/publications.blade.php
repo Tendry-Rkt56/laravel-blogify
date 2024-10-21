@@ -18,8 +18,12 @@
     </div>
     <div class="post-footer">
         <div class="tags">
-            <span class="tag">#JavaScript</span>
-            <span class="tag">#PHP</span>
+            <form method="POST" action="{{route('user.comments.store')}}" class="d-flex align-items-center justify-content-center gap-1" style="width:80%">
+                @csrf
+                <input type="hidden" value="{{$post->id}}" name="post_id">
+                <textarea name="content" id="" class="form-control @error('content') is-invalid @enderror"></textarea>
+                <input type="submit" class="btn btn-outline-primary" value="Répondre">
+            </form>
         </div>
         <div class="post-actions">
             @if (str_contains(request()->route()->getName(), 'admin.') && Auth::user()->isAdmin() || Auth::user()->id == $post->user->id)
@@ -50,6 +54,16 @@
             <div class="comment-content">
                 <p>{{$comment->content}}</p>
             </div>
+            @if ($comment->user_id == Auth::user()->id)
+                <div class="d-flex align-items-center container-fluid justify-content-between">
+                    <div></div>
+                    <form method="POST" action="{{route('user.comments.delete', $comment)}}">
+                        @csrf
+                        @method("DELETE")
+                        <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                    </form>
+                </div>
+            @endif
         </div>
     @empty
         <div class="container">Pas de commentaire</div>
