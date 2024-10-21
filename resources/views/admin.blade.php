@@ -17,9 +17,6 @@
 <body>
     <i class='bx bx-menu' id="menu-icon"></i>
     <x-app-layout>
-        <div class="py-12">
-
-        </div>
     </x-app-layout>
     @php
         $route = request()->route()->getName();
@@ -34,17 +31,13 @@
                  <span class="icons"><i class='bx bxs-map'></i></span>
                  <span class="text">Publications</span>
             </a>
-            <a>
-                 <span class="icons"><i class='bx bxs-info-circle'></i></span>
-                 <span class="text">Agence</span>
+            <a href="{{route('profile.edit')}}">
+                 <span class="icons"><i class='bx bx-user-circle'></i></span>
+                 <span class="text">Compte</span>
             </a>
             <a href="{{route('admin.users.index')}}" @class(['active' => str_contains($route, '.users.')]) style="text-decoration:none;" href="/users">
                  <span class="icons"><i class='bx bxs-user'></i></span>
                  <span class="text">Utilisateurs</span>
-            </a>
-            <a style="text-decoration:none;" href="/gallery">
-                 <span class="icons"><i class='bx bx-images'></i></span>
-                 <span class="text">Galerie</span>
             </a>
         </div>
    </div>

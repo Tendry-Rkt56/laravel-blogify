@@ -1,4 +1,4 @@
-<div class="posts-wrapper">
+<div class="post-wrapper">
     <div class="post-header">
         <img src="{{$post->user->imageUrl()}}" alt="User Photo" class="user-photo">
         <div class="user-info">
@@ -7,6 +7,7 @@
         </div>
     </div>
     <div class="post-content">
+        <img style="width:40%;height:150px;" src="{{$post->user->imageUrl()}}" alt="">
         <p>{{$post->description}}</p>
     </div>
     <div class="post-footer">
@@ -26,8 +27,26 @@
             @php
                 $commentaires = $post->comments->count() > 1 ? 'commentaires' : 'commentaire';
             @endphp
-            <a href="{{route('admin.posts.show', $post)}}"><span>{{$post->comments->count()}} {{$commentaires}}</span></a>
+            <span>{{$post->comments->count()}} {{$commentaires}}</span>
         </div>
     </div>
-</div>
 
+<div class="comments-section">
+    @forelse ($post->comments as $comment)
+        <div class="comment">
+            <div class="comment-header">
+                <img src="{{$comment->user->image ? $comment->user->imageUrl() : 'https://via.placeholder.com/40'}}" alt="Commenter Photo" class="comment-photo">
+                <div class="comment-info">
+                    <a href="{{route('admin.users.show', $comment->user)}}"><h4>{{$comment->user->name}}</h4></a>
+                    <span class="comment-date">Commenté le : 20 Octobre 2024</span>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>{{$comment->content}}</p>
+            </div>
+        </div>
+    @empty
+        <div class="container">Pas de commentaire</div>
+    @endforelse
+</div>
+</div>

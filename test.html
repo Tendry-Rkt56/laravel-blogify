@@ -1,0 +1,207 @@
+<div class="post-wrapper">
+    <div class="post-header">
+        <img src="https://via.placeholder.com/50" alt="User Photo" class="user-photo">
+        <div class="user-info">
+            <h3>John Doe</h3>
+            <span class="post-date">Publié le : 19 Octobre 2024</span>
+        </div>
+    </div>
+    <div class="post-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna a nulla fermentum fermentum.</p>
+    </div>
+    <div class="post-footer">
+        <div class="tags">
+            <span class="tag">#JavaScript</span>
+            <span class="tag">#PHP</span>
+        </div>
+        <div class="post-actions">
+            <button class="share-btn">Partager</button>
+            <span>123 Vues</span>
+        </div>
+    </div>
+    <button class="toggle-comments-btn" onclick="toggleComments(this)">Voir les commentaires</button>
+    <div class="comments-section" style="display: none;">
+        <div class="comment">
+            <div class="comment-header">
+                <img src="https://via.placeholder.com/40" alt="Commenter Photo" class="comment-photo">
+                <div class="comment-info">
+                    <h4>Jane Doe</h4>
+                    <span class="comment-date">Commenté le : 20 Octobre 2024</span>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>Très bon article, merci pour le partage !</p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-header">
+                <img src="https://via.placeholder.com/40" alt="Commenter Photo" class="comment-photo">
+                <div class="comment-info">
+                    <h4>Mark Smith</h4>
+                    <span class="comment-date">Commenté le : 21 Octobre 2024</span>
+                </div>
+            </div>
+            <div class="comment-content">
+                <p>J'apprécie vraiment cette publication, continuez comme ça !</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .post-wrapper {
+        width: 60%;
+        margin: 20px auto;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .user-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .user-info h3 {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .user-info .post-date {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .post-content {
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .post-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .tags {
+        display: flex;
+        gap: 8px;
+    }
+
+    .tag {
+        background-color: #3498db;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+
+    .post-actions {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .share-btn {
+        padding: 8px 12px;
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .share-btn:hover {
+        background-color: #27ae60;
+    }
+
+    .toggle-comments-btn {
+        display: block;
+        margin: 15px 0;
+        padding: 8px 12px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .toggle-comments-btn:hover {
+        background-color: #2980b9;
+    }
+
+    .comments-section {
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid #eaeaea;
+    }
+
+    .comment {
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+
+    .comment-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .comment-photo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .comment-info h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .comment-info .comment-date {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .comment-content {
+        font-size: 14px;
+        color: #444;
+    }
+
+
+</style>
+<script>
+    function toggleComments(button) {
+        const commentsSection = button.nextElementSibling;
+        if (commentsSection.style.display === "none") {
+            commentsSection.style.display = "block";
+            button.textContent = "Masquer les commentaires";
+        } else {
+            commentsSection.style.display = "none";
+            button.textContent = "Voir les commentaires";
+        }
+    }
+</script>
+

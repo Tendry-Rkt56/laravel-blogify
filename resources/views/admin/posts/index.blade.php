@@ -5,13 +5,12 @@
 @endsection
 @section('containers')
     <div class="container-fluid d-flex align-items-center justify-content-between gap-1 mb-5">
-        <h2 class="title" class="my-4 fw-bolder">Les utilsateurs</h2>
-        <a href="" class="btn btn-secondary btn-sm">Ajouter un nouvel user</a>
+        <h2 class="title" class="my-4 fw-bolder">Les publications</h2>
     </div>
 
     <form class="gap-2 d-flex align-items-center justify-content-start flex-row" style="width:70%">
         <input type="text" value="{{$search}}" placeholder="Rechercher..." class="form-control" style="width:30%" name="search">
-        <input type="submit" class="btn btn-outline-primary btn-sm">
+        <input type="submit" value="Rechercher" class="btn btn-outline-primary btn-sm">
     </form>
 
     <div class="my-4 container-fluid d-flex align-items-center justify-content-center flex-column">
@@ -27,9 +26,11 @@
         @endif
 
         <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 @include('components.publication', ['post' => $post])
-            @endforeach
+            @empty
+                <div class="container fw-bolder">Aucune publication correspondante</div>
+            @endforelse ()
             {{$posts->links()}}
         </div>
 

@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @forelse ($users as $user)
                     <tr @class(['table-dark' => $user->id == Auth::user()->id])>
                         <td>{{$user->id}}</td>
                         <td>
@@ -62,7 +62,16 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Pas de correspondance</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
