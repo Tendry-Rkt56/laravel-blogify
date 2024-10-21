@@ -16,7 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Comment::factory()->count(1000)->create();
-        // User::factory(112)->hasPosts(random_int(2,5))->create();
+        User::factory()->create([
+            'name' => 'Admin 01',
+            'password' => Hash::make('admin01'),
+            'email' => 'admin01@gmail.com',
+            'role' => 'admin',
+            'adresse' => 'Dans le monde',
+        ]);
+        User::factory(10)->hasPosts(random_int(2,5))->create();
+        Comment::factory()->count(100)->create();
     }
 }
