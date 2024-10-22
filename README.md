@@ -18,7 +18,7 @@ Suivez les étapes ci-dessous pour configurer le projet localement :
 1. **Cloner le dépôt**
 
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-projet.git
+   git clone https://github.com/Tendry-Rkt56/laravel-blogify.git
 
 2. **Naviguer dans le dossier du projet**
 
